@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+// Función para intercambiar dos elementos
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+// Función para ordenar un array utilizando el método de selección
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        // Encuentra el índice del elemento mínimo
+        int minIndex = i;
+        for (int j = i+1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        // Intercambia el elemento mínimo con el primer elemento no ordenado
+        swap(arr[minIndex], arr[i]);
+    }
+}
+
+// Función para imprimir el array
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    cout << "Array original: ";
+    printArray(arr, n);
+    selectionSort(arr, n);
+    cout << "Array ordenado: ";
+    printArray(arr, n);
+    return 0;
+}
